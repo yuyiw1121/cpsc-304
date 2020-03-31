@@ -43,7 +43,6 @@ header{
     margin: 20% 29%;
     text-align: center;
 }
-
 .login-button a{
      border: 1px solid #fff;
      padding: 10px 25px;
@@ -55,6 +54,27 @@ header{
      color: #fff;
 }
 .login-button a:hover{
-     background: #fff;
      color: #333;
+}
+.dropdown-button{
+    display: inline-block;
+}
+.dropdown-button a:hover{
+    background: #fff;
+    color: #333;
+}
+.dropdown-button:hover .dropdown-menu{
+    display:block;
+}
+.dropdown-menu{
+    display: none;
+    position: absolute;
+}
+.dropdown-menu a{
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-family: poppins;
+    font-size: 16px;
 }
