@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.wrapper{
+    width: relative;
+    margin: auto;
+}
+header{
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("profile-background.jpg");
+    /*src: Image by Arek Socha from Pixabay */
+    height: 150px;
+    -webkit-background-size:cover;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+header h1{
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 50px;
+    text-shadow: 5px 5px 5px black;
+    padding-left: 30px;
+    padding-top: 80px;
+}
+
+.nav-area{
+    float: right;
+    list-style: none;
+    margin-top: 30px;
+}
+.nav-area li{
+    display: inline-block;
+}
+.nav-area li a{
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-family: poppins;
+    font-size: 16px;
+}
+.nav-area li a:hover{
+    background: #fff;
+    color: #333;
+}
+
+.selectionForm {
+    background: rgb(255, 255, 255);
+    padding-top: 50px;
+    position: center;
+    text-align: center;
+    color: rgb(202, 20, 20);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 30px;
+}
+
+.button {
+    background-color: rgb(209, 0, 0);
+    border: black;
+    border-radius: 25px;
+    color: rgb(255, 255, 255);
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgb(99, 185, 0);
+    color: white;
+
+}
+
