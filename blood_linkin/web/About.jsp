@@ -2,15 +2,15 @@
   Created by IntelliJ IDEA.
   User: yuyi9
   Date: 2020-04-01
-  Time: 2:56 p.m.
+  Time: 3:17 p.m.
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="en">
 <head>
-    <meta charset = "UTF-8">
-    <title>Blood Linkin</title>
-    <link rel="stylesheet" href="style/Home.css">
+    <meta charset="UTF-8">
+    <title>About</title>
+    <link rel="stylesheet" href="style/About.css">
 </head>
 <body>
 <header>
@@ -29,10 +29,10 @@
         </ul>
     </dic>
 
-    <div class="welcome-text">
-        <h1>Donate today.</h1>
-        <h2>Bring a difference.</h2>
-        <a href="#">Join now</a>
+    <div class="about-text">
+        <h1>About</h1>
+        <h2>This is a CPSC-304 term project by</h2>
+        <h2>Yuyi Wang, Rica Aquino, and Mable Wang</h2>
     </div>
 </header>
 </body>

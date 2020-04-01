@@ -2,15 +2,15 @@
   Created by IntelliJ IDEA.
   User: yuyi9
   Date: 2020-04-01
-  Time: 2:56 p.m.
+  Time: 3:22 p.m.
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="en">
 <head>
-    <meta charset = "UTF-8">
-    <title>Blood Linkin</title>
-    <link rel="stylesheet" href="style/Home.css">
+    <meta charset="UTF-8">
+    <title>User Login</title>
+    <link rel="stylesheet" href="style/UserLogIn.css">
 </head>
 <body>
 <header>
@@ -29,10 +29,17 @@
         </ul>
     </dic>
 
-    <div class="welcome-text">
-        <h1>Donate today.</h1>
-        <h2>Bring a difference.</h2>
-        <a href="#">Join now</a>
+    <div class = "login-form">
+        <label for="username">Username:</label>
+        <input style = "height: 40px; font-size: 16pt;"
+               type="text" id="username" name="username"><br><br>
+        <label for="password">Password:</label>
+        <input style = "height: 40px; font-size: 16pt;"
+               type="password" id="password" name="password"><br><br>
+        <div class = "login-button">
+            <a href="#">Log In</a>
+        </div>
+
     </div>
 </header>
 </body>
