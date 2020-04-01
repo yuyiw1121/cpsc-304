@@ -7,7 +7,7 @@
     margin: auto;
 }
 header{
-    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("profile-background.jpg");
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("../resource/profile-background.jpg");
     /*src: Image by Arek Socha from Pixabay */
     height: 150px;
     -webkit-background-size:cover;

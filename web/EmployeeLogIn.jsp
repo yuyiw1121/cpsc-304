@@ -1,21 +1,28 @@
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: yuyi9
+  Date: 2020-04-01
+  Time: 3:21 p.m.
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User Login</title>
-    <link rel="stylesheet" href="UserLogIn.css">
+    <title>Employee Login</title>
+    <link rel="stylesheet" href="style/EmployeeLogIn.css">
 </head>
 <body>
 <header>
     <dic class = "wrapper">
         <ul class="nav-area">
-            <li><a href="Home.html">Home</a></li>
-            <li><a href="About.html">About</a></li>
+            <li><a href="index.jsp">Home</a></li>
+            <li><a href="About.jsp">About</a></li>
             <div class="dropdown-button">
                 <li><a href="#">Log in</a></li>
                 <div class="dropdown-menu">
-                    <a href="UserLogIn.html">User Login</a>
-                    <a href="EmployeeLogIn.html">Employee Login</a>
+                    <a href="UserLogIn.jsp">User Login</a>
+                    <a href="EmployeeLogIn.jsp">Employee Login</a>
                 </div>
             </div>
             <li><a href="#">Sign up</a></li>
