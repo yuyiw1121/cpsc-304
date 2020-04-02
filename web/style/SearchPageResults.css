@@ -44,32 +44,18 @@ header h1{
     color: #333;
 }
 
-.selectionForm {
-    background: rgb(255, 255, 255);
-    padding-top: 50px;
-    position: center;
-    text-align: center;
-    color: rgb(202, 20, 20);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 30px;
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.button {
-    background-color: rgb(209, 0, 0);
-    border: black;
-    border-radius: 25px;
-    color: rgb(255, 255, 255);
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+td, th {
+    border: 3px solid rgb(0, 0, 0);
+    padding: 0.5rem;
+    text-align: left;
 }
 
-.button:hover {
-    background-color: rgb(99, 185, 0);
-    color: white;
-
+.requestButton {
+    width: 50%;
+    background:  rgb(99, 185, 0);
 }
-
