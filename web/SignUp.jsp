@@ -1,16 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: yuyi9
-  Date: 2020-04-01
-  Time: 3:21 p.m.
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Employee Login</title>
-    <link rel="stylesheet" href="style/EmployeeLogIn.css">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style/SignUp.css">
 </head>
 <body>
 <header>
@@ -29,17 +22,22 @@
         </ul>
     </dic>
 
-    <div class = "login-form">
+    <div class = "signup-form">
         <label for="username">Username:</label>
         <input style = "height: 40px; font-size: 16pt;"
                type="text" id="username" name="username" required><br><br>
         <label for="password">Password:</label>
         <input style = "height: 40px; font-size: 16pt;"
                type="password" id="password" name="password" required><br><br>
-        <div class = "login-button">
+        <label for="repeat-password">Re-enter Password:</label>
+        <input style = "height: 40px; font-size: 16pt;"
+               type="password" id="repeat-password" name="repeat-password" required><br><br>
+        <label for="email">Email:</label>
+        <input style = "height: 40px; font-size: 16pt;"
+               type="text" id="email" name="email" required><br><br>
+        <div class = "signup-button">
             <a href="#">Log In</a>
         </div>
-
     </div>
 </header>
 </body>

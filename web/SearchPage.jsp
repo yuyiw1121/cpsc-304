@@ -20,7 +20,7 @@
             <li><a href="index.jsp">Home</a></li>
             <li><a href="About.jsp">About</a></li>
             <li><a href="SearchPage.jsp">Search</a></li>
-            <li><a href="#">Log out</a></li>
+            <li><a href="SignUp.jsp">Log out</a></li>
         </ul>
     </dic>
     <h1>Search</h1>

@@ -25,17 +25,17 @@
                     <a href="EmployeeLogIn.jsp">Employee Login</a>
                 </div>
             </div>
-            <li><a href="#">Sign up</a></li>
+            <li><a href="SignUp.jsp">Sign up</a></li>
         </ul>
     </dic>
 
     <div class = "login-form">
         <label for="username">Username:</label>
         <input style = "height: 40px; font-size: 16pt;"
-               type="text" id="username" name="username"><br><br>
+               type="text" id="username" name="username" required><br><br>
         <label for="password">Password:</label>
         <input style = "height: 40px; font-size: 16pt;"
-               type="password" id="password" name="password"><br><br>
+               type="password" id="password" name="password" required><br><br>
         <div class = "login-button">
             <a href="#">Log In</a>
         </div>
