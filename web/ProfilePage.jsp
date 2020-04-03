@@ -32,14 +32,14 @@
             <%--@declare id="btype"--%><label class="info-label" for="flname">Name:</label>
             <input class="info-input" type="text" id="flname" name="flname"
                    value="Full name here" readonly><br>
-            <label class="info-label" for="btype">Username:</label>
+            <label class="info-label" for="username">Username:</label>
             <input class="info-input" type="text" id="username" name="username"
                    value="Username here" readonly><br>
             <label class="info-label" for="dob">Date of Birth:</label>
             <input class="info-input" type="date" id="dob" name="dob"
                    value="DOB here" readonly><br>
             <label class="info-label" for="btype">Blood Type:</label>
-            <input class="info-input" type="text" id="flname" name="flname"
+            <input class="info-input" type="text" id="btype" name="btype"
                    value="Blood type here" readonly><br>
             <label class="info-label" for="address">Address:</label>
             <input class="info-input" type="text" id="address" name="address"
