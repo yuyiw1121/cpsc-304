@@ -25,6 +25,7 @@ public class show extends HttpServlet {
         Bank bank = new Bank();
         dbHandler = new DatabaseConnectionHandler();
         dbHandler.login("ora_ywo7w1b", "a60661196");
+
         System.out.println("connected to db");
         BranchModel[] branchs = dbHandler.getBranchInfo();
         System.out.println(branchs.toString());

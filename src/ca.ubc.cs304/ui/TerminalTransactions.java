@@ -40,7 +40,7 @@ public class TerminalTransactions {
 			if (choice != INVALID_INPUT) {
 				switch (choice) {
 				case 1:  
-					delegate.databaseSetup(); 
+					//delegate.databaseSetup();
 					break;
 				case 2:  
 					handleQuitOption();

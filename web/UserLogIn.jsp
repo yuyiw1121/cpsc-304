@@ -28,19 +28,20 @@
             <li><a href="#">Sign up</a></li>
         </ul>
     </dic>
-
-    <div class = "login-form">
-        <label for="username">Username:</label>
-        <input style = "height: 40px; font-size: 16pt;"
-               type="text" id="username" name="username"><br><br>
-        <label for="password">Password:</label>
-        <input style = "height: 40px; font-size: 16pt;"
-               type="password" id="password" name="password"><br><br>
-        <div class = "login-button">
-            <a href="#">Log In</a>
+    <form action="userLogin" method="post">
+        <div class = "login-form">
+            <label for="username">Username:</label>
+            <input style = "height: 40px; font-size: 16pt;"
+                   type="text" id="username" name="username"><br><br>
+            <label for="password">Password:</label>
+            <input style = "height: 40px; font-size: 16pt;"
+                   type="password" id="password" name="password"><br><br>
+            <div class = "login-button">
+                <input type="submit" value="Login">
+            </div>
         </div>
+    </form>
 
-    </div>
 </header>
 </body>
 </html>

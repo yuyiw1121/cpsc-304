@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import ca.ubc.cs304.model.BranchModel;
+import ca.ubc.cs304.model.UserModel;
 
 /**
  * This class handles all database related transactions
@@ -20,6 +21,7 @@ public class DatabaseConnectionHandler {
 	private static final String ORACLE_URL = "jdbc:oracle:thin:@localhost:1522:stu";
 	private static final String EXCEPTION_TAG = "[EXCEPTION]";
 	private static final String WARNING_TAG = "[WARNING]";
+	private static DatabaseConnectionHandler databaseConnectionHandler = null;
 	
 	private Connection connection = null;
 	
@@ -32,7 +34,14 @@ public class DatabaseConnectionHandler {
 			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
 		}
 	}
-	
+
+	public static DatabaseConnectionHandler getInstance() {
+		if(databaseConnectionHandler == null) {
+			databaseConnectionHandler = new DatabaseConnectionHandler();
+		}
+		return databaseConnectionHandler;
+	}
+
 	public void close() {
 		try {
 			if (connection != null) {
@@ -41,6 +50,49 @@ public class DatabaseConnectionHandler {
 		} catch (SQLException e) {
 			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
 		}
+	}
+
+	public void insertUser(UserModel myUser) {
+		try {
+			PreparedStatement ps = connection.prepareStatement("INSERT INTO DCA2 VALUES (?,?,?,?,?)");
+//			ps.setInt(1, model.getId());
+//			ps.setString(2, model.getName());
+//			ps.setString(3, model.getAddress());
+//			ps.setString(4, model.getCity());
+//			if (model.getPhoneNumber() == 0) {
+//				ps.setNull(5, java.sql.Types.INTEGER);
+//			} else {
+//				ps.setInt(5, model.getPhoneNumber());
+//			}
+
+			ps.executeUpdate();
+			connection.commit();
+
+			ps.close();
+		} catch (SQLException e) {
+			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+			rollbackConnection();
+		}
+	}
+
+	public int userLogin(String username, String password) {
+		int aid = 0;
+		try{
+			PreparedStatement ps = connection.prepareStatement("SELECT AID FROM AHC1 WHERE USERNAME = ? AND PASSWORD = ?");
+			ps.setString(1,username);
+			ps.setString(2,password);
+
+			ResultSet rs = ps.executeQuery();
+
+			if(!rs.wasNull()){
+				aid = rs.getInt("AID");
+			}
+		}
+		catch (Exception e) {
+			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+			rollbackConnection();
+		}
+		return aid;
 	}
 
 	public void deleteBranch(int branchId) {

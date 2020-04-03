@@ -139,5 +139,11 @@ public class Bank implements LoginWindowDelegate, TerminalTransactionsDelegate {
 	public static void main(String args[]) {
 		Bank bank = new Bank();
 		bank.start();
+
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+			public void run() {
+				DatabaseConnectionHandler.getInstance().close();
+			}
+		}, "Shutdown-thread"));
 	}
 }
