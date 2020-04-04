@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+import ca.ubc.cs304.model.AccountModel;
 import ca.ubc.cs304.model.BranchModel;
 import ca.ubc.cs304.model.UserModel;
 
@@ -48,17 +49,16 @@ public class DatabaseConnectionHandler {
 		}
 	}
 
-	public int insertUser(String username, String password, String accountType) {
-		int aid = 0;
+	public void insertUser(AccountModel newAccount, int hcid) {
+		int aid = newAccount.getAID();
 		try {
-			Random rand = new Random();
-			aid = rand.nextInt(1000);
 			// Insert username, password, accountType into AHC1 table
-			PreparedStatement ps = connection.prepareStatement("INSERT INTO AHC1 VALUES (?,?,?,?)");
+			PreparedStatement ps = connection.prepareStatement("INSERT INTO AHC1 VALUES (?,?,?,?,?)");
 			ps.setInt(1, aid);
-			ps.setString(2, username);
-			ps.setString(3, password);
-			ps.setString(4, accountType);
+			ps.setString(2, newAccount.getUsername());
+			ps.setString(3, newAccount.getPassword());
+			ps.setString(4, newAccount.getAccountType());
+			ps.setString(5,newAccount.getStatus());
 
 			ps.executeUpdate();
 			connection.commit();
@@ -66,8 +66,47 @@ public class DatabaseConnectionHandler {
 			// Insert aid into AHC2 table for later profile update
 			ps = connection.prepareStatement("INSERT INTO AHC2 VALUES (?,?)");
 			ps.setInt(1, aid);
-			ps.setNull(2, Types.CHAR);
+			ps.setNull(2, Types.CHAR); //ADDRESS
 
+			ps.executeUpdate();
+			connection.commit();
+
+			// If accountType is donor
+			if(newAccount.getAccountType().equals("DONOR")) {
+				// Insert aid and hcid into DCA1 table
+				ps = connection.prepareStatement("INSERT INTO DCA1 VALUES (?,?)");
+				ps.setInt(1, hcid);
+				ps.setInt(2, aid);
+
+				ps.executeUpdate();
+				connection.commit();
+
+				// Insert aid into DCA2 table for later profile update
+				ps = connection.prepareStatement("INSERT INTO DCA2 VALUES (?,?,?,?,?)");
+				ps.setInt(1, aid);
+				ps.setNull(2, Types.INTEGER); //AGE
+				ps.setNull(3, Types.CHAR); //GENDER
+				ps.setNull(4, Types.CHAR); //NAME
+				ps.setNull(5, Types.CHAR); //BLOOD-TYPE
+
+			}
+			else {
+				// Insert aid and hcid into RCA1 table
+				ps = connection.prepareStatement("INSERT INTO RCA1 VALUES (?,?)");
+				ps.setInt(1, hcid);
+				ps.setInt(2, aid);
+
+				ps.executeUpdate();
+				connection.commit();
+
+				// Insert aid into RCA2 table for later profile update
+				ps = connection.prepareStatement("INSERT INTO RCA2 VALUES (?,?,?,?)");
+				ps.setInt(1, aid);
+				ps.setNull(2, Types.INTEGER);
+				ps.setNull(3, Types.CHAR);
+				ps.setNull(4, Types.CHAR);
+
+			}
 			ps.executeUpdate();
 			connection.commit();
 
@@ -76,7 +115,7 @@ public class DatabaseConnectionHandler {
 			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
 			rollbackConnection();
 		}
-		return aid;
+
 	}
 
 	public int userLogin(String username, String password) {
