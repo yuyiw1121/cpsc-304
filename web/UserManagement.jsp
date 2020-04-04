@@ -18,10 +18,11 @@
 <header>
     <div class = "wrapper">
         <ul class="nav-area">
-            <li><a href="ProfilePage.html">My Profile</a></li>
-            <li><a href="Home.html">Home</a></li>
-            <li><a href="About.html">About</a></li>
-            <li><a href="SearchPage.html">Search</a></li>
+            <li><a href="ProfilePage.jsp">My Profile</a></li>
+            <li><a href="index.jsp">Home</a></li>
+            <li><a href="About.jsp">About</a></li>
+            <li><a href="SearchPage.jsp">Search</a></li>
+            <li><a href="UserRequestPage.jsp">Request Blood</a></li>
             <li><a href="#">Log out</a></li>
         </ul>
     </div>
@@ -39,7 +40,7 @@
                        value="Username here"><br>
                 <label class="info-label" for="password">Password:</label>
                 <input class="info-input" type="text" id="password" name="password"
-                       value="Username here"><br>
+                       value="Password here"><br>
                 <label class="info-label" for="dob">Date of Birth:</label>
                 <input class="info-input" type="date" id="dob" name="dob"
                        value="DOB here"><br>

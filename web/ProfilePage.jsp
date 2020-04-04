@@ -21,6 +21,7 @@
             <li><a href="index.jsp">Home</a></li>
             <li><a href="About.jsp">About</a></li>
             <li><a href="SearchPage.jsp">Search</a></li>
+            <li><a href="UserRequestPage.jsp">Request Blood</a></li>
             <li><a href="#">Log out</a></li>
         </ul>
     </div>

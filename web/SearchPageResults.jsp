@@ -17,10 +17,11 @@
 <header>
     <dic class = "wrapper">
         <ul class="nav-area">
-            <li><a href="ProfilePage.html">My Profile</a></li>
-            <li><a href="Home.html">Home</a></li>
-            <li><a href="About.html">About</a></li>
-            <li><a href="SearchPage.html">Search</a></li>
+            <li><a href="ProfilePage.jsp">My Profile</a></li>
+            <li><a href="index.jsp">Home</a></li>
+            <li><a href="About.jsp">About</a></li>
+            <li><a href="SearchPage.jsp">Search</a></li>
+            <li><a href="UserRequestPage.jsp">Request Blood</a></li>
             <li><a href="#">Log out</a></li>
         </ul>
     </dic>
@@ -34,7 +35,6 @@
                 <th>Name</th>
                 <th>ID</th>
                 <th>Blood Type</th>
-                <th>Address</th>
                 <th>Location</th>
                 <th>Email</th>
                 <th>Contact Number</th>
@@ -42,7 +42,6 @@
             </thead>
             <tbody>
             <tr>
-                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
