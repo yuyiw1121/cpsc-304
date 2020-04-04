@@ -1,11 +1,6 @@
 package ca.ubc.cs304.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -53,16 +48,25 @@ public class DatabaseConnectionHandler {
 		}
 	}
 
-	public int insertUser(String username, String password) {
+	public int insertUser(String username, String password, String accountType) {
 		int aid = 0;
 		try {
 			Random rand = new Random();
 			aid = rand.nextInt(1000);
+			// Insert username, password, accountType into AHC1 table
 			PreparedStatement ps = connection.prepareStatement("INSERT INTO AHC1 VALUES (?,?,?,?)");
 			ps.setInt(1, aid);
 			ps.setString(2, username);
 			ps.setString(3, password);
-			ps.setNull(4,java.sql.Types.INTEGER);
+			ps.setString(4, accountType);
+
+			ps.executeUpdate();
+			connection.commit();
+
+			// Insert aid into AHC2 table for later profile update
+			ps = connection.prepareStatement("INSERT INTO AHC2 VALUES (?,?)");
+			ps.setInt(1, aid);
+			ps.setNull(2, Types.CHAR);
 
 			ps.executeUpdate();
 			connection.commit();

@@ -5,12 +5,14 @@ public class AccountModel {
     private String password;
     private int AID;
     private String status;
+    private String accountType;
 
-    public AccountModel(String username, String password, int AID, String status) {
+    public AccountModel(String username, String password, int AID, String status, String accountType) {
         this.username = username;
         this.password = password;
         this.AID = AID;
         this.status = status;
+        this.accountType = accountType;
     }
 
     public String getUsername() {
@@ -43,5 +45,13 @@ public class AccountModel {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
     }
 }

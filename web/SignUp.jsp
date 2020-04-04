@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="style/SignUp.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/style/SignUp.css">
 </head>
 <body>
 <header>
@@ -35,8 +35,18 @@
             <label for="email">Email:</label>
             <input style = "height: 40px; font-size: 16pt;"
                    type="text" id="email" name="email" required><br><br>
+            <label for="hcid">Health card number:</label>
+            <input style = "height: 40px; font-size: 16pt;"
+                   type="text" id="hcid" name="hcid" required><br><br>
+            <label for="Donor">Donor:</label>
+            <input style = "height: 25px; width: 25px"
+                    type="checkbox" id="donor" name="donor" value="Donor" required>
+            <label for="Receiver">Receiver:</label>
+            <input style = "height: 25px; width: 25px"
+                   type="checkbox" id="receiver" name="receiver" value="Receiver" required> <br><br>
             <div class = "signup-button">
-                <input type="submit" value="Log in">
+                    <input style="border: 1px solid #fff; padding: 10px 25px; text-decoration: none; text-transform: uppercase;
+                            font-size: 24px; margin-top: 30px; display: inline-block; color: #fff; background: transparent" type="submit" value="Log in">
             </div>
         </div>
     </form>

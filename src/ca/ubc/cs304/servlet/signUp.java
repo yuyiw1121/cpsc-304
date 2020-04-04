@@ -20,7 +20,7 @@ public class signUp extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        int aid = dbHandler.insertUser(username, password);
+        int aid = dbHandler.insertUser(username, password, "donor");
 
         if(aid != 0) {
             pw.println("Sign up successfully...");
