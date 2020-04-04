@@ -45,7 +45,6 @@ header h1{
 }
 
 .info-section {
-    background: url(../resource/profile-side.png);
     background-repeat: no-repeat;
     background-position: center right 50px;
 }
@@ -80,4 +79,21 @@ header h1{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.button {
+    background-color: rgb(209, 0, 0);
+    border: black;
+    border-radius: 25px;
+    color: rgb(255, 255, 255);
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 
+.button:hover {
+    background-color: rgb(99, 185, 0);
+    color: white;
+
+}

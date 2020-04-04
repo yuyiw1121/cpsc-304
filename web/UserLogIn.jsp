@@ -25,7 +25,7 @@
                     <a href="EmployeeLogIn.jsp">Employee Login</a>
                 </div>
             </div>
-            <li><a href="#">Sign up</a></li>
+            <li><a href="SignUp.jsp">Sign up</a></li>
         </ul>
     </dic>
     <form action="userLogin" method="post">

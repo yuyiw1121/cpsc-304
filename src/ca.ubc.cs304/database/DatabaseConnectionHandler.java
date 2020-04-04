@@ -78,9 +78,15 @@ public class DatabaseConnectionHandler {
 	public int userLogin(String username, String password) {
 		int aid = 0;
 		try{
-			PreparedStatement ps = connection.prepareStatement("SELECT AID FROM AHC1 WHERE USERNAME = ? AND PASSWORD = ?");
+			Statement stmt = connection.createStatement();
+			ResultSet result = stmt.executeQuery("SELECT * FROM AHC1");
+			System.out.println("read all users...");
+			while(result.next()){
+				System.out.println(result.getString("username")+ " "+ result.getString("password"));
+			}
+			PreparedStatement ps = connection.prepareStatement("SELECT AID FROM AHC1 WHERE USERNAME = ?");
 			ps.setString(1,username);
-			ps.setString(2,password);
+			//ps.setString(2,password);
 
 			ResultSet rs = ps.executeQuery();
 
