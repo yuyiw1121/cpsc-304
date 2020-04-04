@@ -8,7 +8,7 @@ public class User {
 
     public User() { dbHandler = new DatabaseConnectionHandler(); }
 
-    public void insertUser(UserModel user) { dbHandler.insertUser(user); }
+    public void insertUser(String username, String password) { dbHandler.insertUser(username, password); }
 
     public void userLogin(String username, String password) { dbHandler.userLogin(username,password); }
 

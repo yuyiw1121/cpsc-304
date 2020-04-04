@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Random;
 
 import ca.ubc.cs304.model.BranchModel;
 import ca.ubc.cs304.model.UserModel;
@@ -52,18 +53,16 @@ public class DatabaseConnectionHandler {
 		}
 	}
 
-	public void insertUser(UserModel myUser) {
+	public int insertUser(String username, String password) {
+		int aid = 0;
 		try {
-			PreparedStatement ps = connection.prepareStatement("INSERT INTO DCA2 VALUES (?,?,?,?,?)");
-//			ps.setInt(1, model.getId());
-//			ps.setString(2, model.getName());
-//			ps.setString(3, model.getAddress());
-//			ps.setString(4, model.getCity());
-//			if (model.getPhoneNumber() == 0) {
-//				ps.setNull(5, java.sql.Types.INTEGER);
-//			} else {
-//				ps.setInt(5, model.getPhoneNumber());
-//			}
+			Random rand = new Random();
+			aid = rand.nextInt(1000);
+			PreparedStatement ps = connection.prepareStatement("INSERT INTO AHC1 VALUES (?,?,?,?)");
+			ps.setInt(1, aid);
+			ps.setString(2, username);
+			ps.setString(3, password);
+			ps.setNull(4,java.sql.Types.INTEGER);
 
 			ps.executeUpdate();
 			connection.commit();
@@ -73,24 +72,29 @@ public class DatabaseConnectionHandler {
 			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
 			rollbackConnection();
 		}
+		return aid;
 	}
 
 	public int userLogin(String username, String password) {
 		int aid = 0;
 		try{
 			Statement stmt = connection.createStatement();
-			ResultSet result = stmt.executeQuery("SELECT * FROM AHC1");
-			System.out.println("read all users...");
+			System.out.println("Getting row from db where username = 'test user'");
+			ResultSet result = stmt.executeQuery("SELECT * FROM ORA_YWO7W1B.AHC1 where USERNAME = 'test user'");
 			while(result.next()){
-				System.out.println(result.getString("username")+ " "+ result.getString("password"));
+				System.out.println("result from db: " + result.getString("username")+ " "+ result.getString("password"));
 			}
-			PreparedStatement ps = connection.prepareStatement("SELECT AID FROM AHC1 WHERE USERNAME = ?");
+
+			System.out.println("Getting aid for username: " + username);
+			PreparedStatement ps = connection.prepareStatement("SELECT AID FROM ORA_YWO7W1B.AHC1 WHERE USERNAME = ?");
 			ps.setString(1,username);
+
 			//ps.setString(2,password);
 
 			ResultSet rs = ps.executeQuery();
 
 			if(!rs.wasNull()){
+				System.out.println("AID: " +rs.getInt("AID"));
 				aid = rs.getInt("AID");
 			}
 		}

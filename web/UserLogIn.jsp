@@ -37,7 +37,7 @@
             <input style = "height: 40px; font-size: 16pt;"
                    type="password" id="password" name="password"><br><br>
             <div class = "login-button">
-                <input type="submit" value="Login">
+                <input type="submit" value="Log in">
             </div>
         </div>
     </form>

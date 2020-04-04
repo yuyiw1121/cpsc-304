@@ -22,6 +22,16 @@
         <servlet-name>userLogin</servlet-name>
         <url-pattern>/userLogin</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>signUp</servlet-name>
+        <servlet-class>ca.ubc.cs304.servlet.signUp</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>signUp</servlet-name>
+        <url-pattern>/signUp</url-pattern>
+    </servlet-mapping>
 
     
 </web-app>
