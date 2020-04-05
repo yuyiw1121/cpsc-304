@@ -41,9 +41,9 @@
                 <label class="info-label" for="password">Password:</label>
                 <input class="info-input" type="text" id="password" name="password"
                        value="Password here"><br>
-                <label class="info-label" for="dob">Date of Birth:</label>
-                <input class="info-input" type="date" id="dob" name="dob"
-                       value="DOB here"><br>
+                <label class="info-label" for="age">Age:</label>
+                <input class="info-input" type="number" id="age" name="age"
+                       value="Age here"><br>
                 <label class="info-label" for="btype">Blood Type:</label>
                 <input class="info-input" type="text" id="btype" name="bytype"
                        value="Blood type here"><br>

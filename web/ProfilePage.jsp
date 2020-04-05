@@ -36,9 +36,9 @@
             <label class="info-label" for="username">Username:</label>
             <input class="info-input" type="text" id="username" name="username"
                    value="Username here" readonly><br>
-            <label class="info-label" for="dob">Date of Birth:</label>
-            <input class="info-input" type="date" id="dob" name="dob"
-                   value="DOB here" readonly><br>
+            <label class="info-label" for="age">Age:</label>
+            <input class="info-input" type="number" id="age" name="age"
+                   value="Age here" readonly><br>
             <label class="info-label" for="btype">Blood Type:</label>
             <input class="info-input" type="text" id="btype" name="btype"
                    value="Blood type here" readonly><br>
