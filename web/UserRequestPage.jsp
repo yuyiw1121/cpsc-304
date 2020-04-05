@@ -11,7 +11,7 @@
 <head>
     <meta charset = "UTF-8">
     <title>Make A Request</title>
-    <link rel="stylesheet" href="UserRequestPage.css">
+    <link rel="stylesheet" href="style/UserRequestPage.css">
 
 </head>
 <body>
@@ -46,8 +46,8 @@
                 <label class="info-label" for="amount">Amount (ml):</label>
                 <input class="info-input" type="number" id="amount" name="amount"
                        placeholder="Amount of blood needed" required><br>
-                <label class="info-label" for="timeOfReq">Time:</label>
-                <input class="info-input" type="time" id="timeOfReq" name="timeOfReq"
+                <label class="info-label" for="dateOfReq">Date:</label>
+                <input class="info-input" type="date" id="dateOfReq" name="dateOfReq"
                        required><br>
                 <label class="info-label" for="desc">Description:</label>
                 <input class="info-input" type="text" id="desc" name="desc"
