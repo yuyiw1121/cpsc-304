@@ -29,6 +29,9 @@ public class userLogin extends HttpServlet {
 
         if(aid != 0) {
             pw.println("login successfully, account id: " + aid);
+            String aidStr = Integer.toString(aid);
+            request.setAttribute("aid", aidStr);
+            request.getRequestDispatcher("SearchPage.jsp").forward(request, response);
         }
         else {
             pw.println("Wrong password!");

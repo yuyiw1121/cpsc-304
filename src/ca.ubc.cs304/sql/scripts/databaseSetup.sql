@@ -1,6 +1,8 @@
 drop table branch;
 drop table AHC1;
+drop table AHC2;
 drop table DCA2;
+drop table AHC3;
 
 CREATE TABLE branch (
 	branch_id integer not null PRIMARY KEY,
@@ -14,14 +16,17 @@ CREATE TABLE AHC1 (
                       AID INTEGER primary key ,
                       Username CHAR(40) unique ,
                       Password CHAR(40) not null,
-                      accountType CHAR(10) not null
+                      accountType CHAR(10) not null,
+                      status CHAR(10) not null
                   );
 
 CREATE TABLE AHC2 (
                       AID INTEGER,
                       Address CHAR(40),
-                      PRIMARY KEY (AID),
+                      PRIMARY KEY (AID, Address),
                       foreign key (AID) REFERENCES AHC1
+                          ON DELETE CASCADE,
+                      foreign key (Address) REFERENCES  AHC3
                           ON DELETE CASCADE
 );
 

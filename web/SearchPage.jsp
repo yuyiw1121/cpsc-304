@@ -13,10 +13,13 @@
     <link rel="stylesheet" href="style/SearchPage.css">
 </head>
 <body>
+
 <header>
     <dic class = "wrapper">
         <ul class="nav-area">
-            <li><a href="ProfilePage.jsp">My Profile</a></li>
+            <li><a href="${pageContext.request.contextPath}/getProfile?aid=${aid}">
+            <form action="${pageContext.request.contextPath}/getProfile" method="post" >
+            </form> My Profile</a></li>
             <li><a href="index.jsp">Home</a></li>
             <li><a href="About.jsp">About</a></li>
             <li><a href="SearchPage.jsp">Search</a></li>

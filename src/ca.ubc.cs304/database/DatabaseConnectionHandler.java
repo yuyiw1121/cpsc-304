@@ -7,6 +7,7 @@ import java.util.Random;
 import ca.ubc.cs304.model.AccountModel;
 import ca.ubc.cs304.model.BranchModel;
 import ca.ubc.cs304.model.UserModel;
+import oracle.sql.CHAR;
 
 /**
  * This class handles all database related transactions
@@ -63,14 +64,6 @@ public class DatabaseConnectionHandler {
 			ps.executeUpdate();
 			connection.commit();
 
-			// Insert aid into AHC2 table for later profile update
-			ps = connection.prepareStatement("INSERT INTO AHC2 VALUES (?,?)");
-			ps.setInt(1, aid);
-			ps.setNull(2, Types.CHAR); //ADDRESS
-
-			ps.executeUpdate();
-			connection.commit();
-
 			// If accountType is donor
 			if(newAccount.getAccountType().equals("DONOR")) {
 				// Insert aid and hcid into DCA1 table
@@ -123,22 +116,28 @@ public class DatabaseConnectionHandler {
 		try{
 			Statement stmt = connection.createStatement();
 			System.out.println("Getting row from db where username = 'test user'");
-			ResultSet result = stmt.executeQuery("SELECT * FROM ORA_YWO7W1B.AHC1 where USERNAME = 'test user'");
+			ResultSet result = stmt.executeQuery("SELECT * FROM ORA_YWO7W1B.AHC1 where USERNAME = 'test user' AND PASSWORD = '123456'" );
 			while(result.next()){
 				System.out.println("result from db: " + result.getString("username")+ " "+ result.getString("password"));
+				aid = result.getInt("aid");
 			}
 
-			System.out.println("Getting aid for username: " + username);
-			PreparedStatement ps = connection.prepareStatement("SELECT AID FROM ORA_YWO7W1B.AHC1 WHERE USERNAME = ?");
-			ps.setString(1,username);
 
-			//ps.setString(2,password);
+			System.out.println("Getting aid for username: " + username);
+			//String sql = "SELECT aid FROM ORA_YWO7W1B.AHC1 WHERE USERNAME = 'yuyi' AND PASSWORD = '123456'";
+			String un = "'test user'";
+			String pw = "'123456";
+
+			PreparedStatement ps = connection.prepareStatement("SELECT AID FROM ORA_YWO7W1B.AHC1 WHERE Username = ? AND Password = ?");
+			ps.setString(1,un);
+			ps.setString(2,pw);
+			System.out.println("Prepared statement: " + ps.toString());
 
 			ResultSet rs = ps.executeQuery();
 
-			if(!rs.wasNull()){
-				System.out.println("AID: " +rs.getInt("AID"));
-				aid = rs.getInt("AID");
+			if(rs.next() && !rs.wasNull()){
+				System.out.println("AID: " +rs.getInt(1));
+				aid = rs.getInt(1);
 			}
 		}
 		catch (Exception e) {
