@@ -1,5 +1,6 @@
 package ca.ubc.cs304.database;
 
+import java.security.interfaces.RSAKey;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -7,6 +8,7 @@ import java.util.Random;
 import ca.ubc.cs304.model.AccountModel;
 import ca.ubc.cs304.model.BranchModel;
 import ca.ubc.cs304.model.UserModel;
+import oracle.jdbc.proxy.annotation.Pre;
 import oracle.sql.CHAR;
 
 /**
@@ -116,22 +118,30 @@ public class DatabaseConnectionHandler {
 		try{
 			Statement stmt = connection.createStatement();
 			System.out.println("Getting row from db where username = 'test user'");
-			ResultSet result = stmt.executeQuery("SELECT * FROM ORA_YWO7W1B.AHC1 where USERNAME = 'test user' AND PASSWORD = '123456'" );
+			ResultSet result = stmt.executeQuery("SELECT * FROM AHC1 where USERNAME = 'test user'" );
 			while(result.next()){
 				System.out.println("result from db: " + result.getString("username")+ " "+ result.getString("password"));
-				aid = result.getInt("aid");
+				//aid = result.getInt("aid");
 			}
 
 
-			System.out.println("Getting aid for username: " + username);
-			//String sql = "SELECT aid FROM ORA_YWO7W1B.AHC1 WHERE USERNAME = 'yuyi' AND PASSWORD = '123456'";
-			String un = "'test user'";
-			String pw = "'123456";
 
-			PreparedStatement ps = connection.prepareStatement("SELECT AID FROM ORA_YWO7W1B.AHC1 WHERE Username = ? AND Password = ?");
-			ps.setString(1,un);
-			ps.setString(2,pw);
-			System.out.println("Prepared statement: " + ps.toString());
+			//String sql = "SELECT aid FROM ORA_YWO7W1B.AHC1 WHERE USERNAME = 'yuyi' AND PASSWORD = '123456'";
+
+
+			String branchName = "Q";
+			PreparedStatement testps = connection.prepareStatement("SELECT BRANCH_ID FROM BRANCH WHERE BRANCH_NAME = ?");
+			testps.setString(1,branchName);
+			ResultSet testrs = testps.executeQuery();
+
+			while(testrs.next()){
+				System.out.println("branch id read: " + testrs.getInt("BRANCH_ID"));
+			}
+
+			System.out.println("Getting aid for username: " + username);
+			PreparedStatement ps = connection.prepareStatement("SELECT AID FROM AHC1 WHERE Username = ?");
+			ps.setString(1,username);
+			//ps.setString(2,password);
 
 			ResultSet rs = ps.executeQuery();
 

@@ -11,11 +11,11 @@
 <head>
     <meta charset = "UTF-8">
     <title>Blood Linkin</title>
-    <link rel="stylesheet" href="SearchPageResults.css">
+    <link rel="stylesheet" href="style/SearchPageResults.css">
 </head>
 <body>
 <header>
-    <dic class = "wrapper">
+    <div class = "wrapper">
         <ul class="nav-area">
             <li><a href="ProfilePage.jsp">My Profile</a></li>
             <li><a href="index.jsp">Home</a></li>
@@ -24,7 +24,7 @@
             <li><a href="UserRequestPage.jsp">Request Blood</a></li>
             <li><a href="#">Log out</a></li>
         </ul>
-    </dic>
+    </div>
     <h1>Results</h1>
 </header>
 <div>

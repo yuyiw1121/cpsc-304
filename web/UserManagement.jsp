@@ -11,7 +11,7 @@
 <head>
     <meta charset = "UTF-8">
     <title>Edit Profile</title>
-    <link rel="stylesheet" href="UserManagement.css">
+    <link rel="stylesheet" href="style/UserManagement.css">
 
 </head>
 <body>
