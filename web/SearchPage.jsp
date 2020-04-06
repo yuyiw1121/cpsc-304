@@ -31,26 +31,26 @@
 </header>
 <div>
     <div class="selectionForm">
-        <form action="#">
+        <form action="searchBType" method="post">
             <h2>Select Blood Type:</h2><br>
             <label for="typeAPos">A+</label>
-            <input type="radio" name="bloodType" id="typeAPos" value="typeAPos"><br>
+            <input type="radio" name="bloodType" id="typeAPos" value="A+"><br>
             <label for="typeANeg">A-</label>
-            <input type="radio" name="bloodType" id="typeANeg" value="typeANeg"><br>
+            <input type="radio" name="bloodType" id="typeANeg" value="A-"><br>
             <label for="typeBPos">B+</label>
-            <input type="radio" name="bloodType" id="typeBPos" value="typeBPos"><br>
+            <input type="radio" name="bloodType" id="typeBPos" value="B+"><br>
             <label for="typeBNeg">B-</label>
-            <input type="radio" name="bloodType" id="typeBNeg" value="typeBNeg"><br>
+            <input type="radio" name="bloodType" id="typeBNeg" value="B-"><br>
             <label for="typeOPos">O+</label>
-            <input type="radio" name="bloodType" id="typeOPos" value="typeOPos"><br>
+            <input type="radio" name="bloodType" id="typeOPos" value="O+"><br>
             <label for="typeONeg">O-</label>
-            <input type="radio" name="bloodType" id="typeONeg" value="typeONeg"><br>
+            <input type="radio" name="bloodType" id="typeONeg" value="O-"><br>
             <label for="typeABPos">AB+</label>
-            <input type="radio" name="bloodType" id="typeABPos" value="typeABPos"><br>
+            <input type="radio" name="bloodType" id="typeABPos" value="AB+"><br>
             <label for="typeABNeg">AB-</label>
-            <input type="radio" name="bloodType" id="typeABNeg" value="typeABNeg"><br>
+            <input type="radio" name="bloodType" id="typeABNeg" value="AB-"><br>
             <br>
-            <input class="button" type="submit" value="Submit">
+            <input type="submit" value="Submit">
         </form>
     </div>
 </div>

@@ -34,13 +34,23 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>getProfile</servlet-name>
-        <servlet-class>ca.ubc.cs304.servlet.getProfile</servlet-class>
-    </servlet>
+    <servlet-name>getProfile</servlet-name>
+    <servlet-class>ca.ubc.cs304.servlet.getProfile</servlet-class>
+</servlet>
 
     <servlet-mapping>
         <servlet-name>getProfile</servlet-name>
         <url-pattern>/getProfile</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>searchBType</servlet-name>
+        <servlet-class>ca.ubc.cs304.servlet.searchBType</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>searchBType</servlet-name>
+        <url-pattern>/searchBType</url-pattern>
     </servlet-mapping>
 
     
