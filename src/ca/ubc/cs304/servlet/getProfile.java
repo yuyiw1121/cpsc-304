@@ -1,5 +1,7 @@
 package ca.ubc.cs304.servlet;
 
+import ca.ubc.cs304.database.DatabaseConnectionHandler;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,13 +13,7 @@ import java.io.PrintWriter;
 @WebServlet(name = "getProfile")
 public class getProfile extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String aid = request.getParameter("aid");
-        System.out.println("GETTING PROFILE POST" );
-        request.setAttribute("aid", aid);
-        request.getRequestDispatcher("ProfilePage.jsp").forward(request, response);
-//        PrintWriter pw = response.getWriter();
-//        pw.println("aid passed: " + aid);
-//        pw.close();
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,6 +21,10 @@ public class getProfile extends HttpServlet {
         String aid = request.getParameter("aid");
         PrintWriter pw = response.getWriter();
         pw.println("aid passed: " + aid);
+        DatabaseConnectionHandler dbHandler = new DatabaseConnectionHandler();
+        dbHandler.login("ora_ywo7w1b", "a60661196");
+        dbHandler.getUserProfile(aid);
+
         pw.close();
     }
 }

@@ -11,6 +11,8 @@ import ca.ubc.cs304.model.UserModel;
 import oracle.jdbc.proxy.annotation.Pre;
 import oracle.sql.CHAR;
 
+import javax.swing.plaf.nimbus.State;
+
 /**
  * This class handles all database related transactions
  */
@@ -56,7 +58,7 @@ public class DatabaseConnectionHandler {
 		int aid = newAccount.getAID();
 		try {
 			// Insert username, password, accountType into AHC1 table
-			PreparedStatement ps = connection.prepareStatement("INSERT INTO AHC1 VALUES (?,?,?,?,?)");
+			PreparedStatement ps = connection.prepareStatement("INSERT INTO AHC1 VALUES (ltrim(rtrim(?, ' '), ' '),ltrim(rtrim(?, ' '), ' '),ltrim(rtrim(?, ' '), ' '),ltrim(rtrim(?, ' '), ' '),ltrim(rtrim(?, ' '), ' '))");
 			ps.setInt(1, aid);
 			ps.setString(2, newAccount.getUsername());
 			ps.setString(3, newAccount.getPassword());
@@ -69,7 +71,7 @@ public class DatabaseConnectionHandler {
 			// If accountType is donor
 			if(newAccount.getAccountType().equals("DONOR")) {
 				// Insert aid and hcid into DCA1 table
-				ps = connection.prepareStatement("INSERT INTO DCA1 VALUES (?,?)");
+				ps = connection.prepareStatement("INSERT INTO DCA1 VALUES (ltrim(rtrim(?, ' '), ' '),ltrim(rtrim(?, ' '), ' '))");
 				ps.setInt(1, hcid);
 				ps.setInt(2, aid);
 
@@ -77,7 +79,7 @@ public class DatabaseConnectionHandler {
 				connection.commit();
 
 				// Insert aid into DCA2 table for later profile update
-				ps = connection.prepareStatement("INSERT INTO DCA2 VALUES (?,?,?,?,?)");
+				ps = connection.prepareStatement("INSERT INTO DCA2 VALUES (ltrim(rtrim(?, ' '), ' '),ltrim(rtrim(?, ' '), ' '),ltrim(rtrim(?, ' '), ' '),ltrim(rtrim(?, ' '), ' '),ltrim(rtrim(?, ' '), ' '))");
 				ps.setInt(1, aid);
 				ps.setNull(2, Types.INTEGER); //AGE
 				ps.setNull(3, Types.CHAR); //GENDER
@@ -87,7 +89,7 @@ public class DatabaseConnectionHandler {
 			}
 			else {
 				// Insert aid and hcid into RCA1 table
-				ps = connection.prepareStatement("INSERT INTO RCA1 VALUES (?,?)");
+				ps = connection.prepareStatement("INSERT INTO RCA1 VALUES (ltrim(rtrim(?, ' '), ' '),ltrim(rtrim(?, ' '), ' '))");
 				ps.setInt(1, hcid);
 				ps.setInt(2, aid);
 
@@ -95,7 +97,7 @@ public class DatabaseConnectionHandler {
 				connection.commit();
 
 				// Insert aid into RCA2 table for later profile update
-				ps = connection.prepareStatement("INSERT INTO RCA2 VALUES (?,?,?,?)");
+				ps = connection.prepareStatement("INSERT INTO RCA2 VALUES (ltrim(rtrim(?, ' '), ' '),ltrim(rtrim(?, ' '), ' '),ltrim(rtrim(?, ' '), ' '),ltrim(rtrim(?, ' '), ' '))");
 				ps.setInt(1, aid);
 				ps.setNull(2, Types.INTEGER);
 				ps.setNull(3, Types.CHAR);
@@ -117,37 +119,26 @@ public class DatabaseConnectionHandler {
 		int aid = 0;
 		try{
 			Statement stmt = connection.createStatement();
-			System.out.println("Getting row from db where username = 'test user'");
-			ResultSet result = stmt.executeQuery("SELECT * FROM AHC1 where USERNAME = 'test user'" );
-			while(result.next()){
-				System.out.println("result from db: " + result.getString("username")+ " "+ result.getString("password"));
-				//aid = result.getInt("aid");
+			String sql = "SELECT AID FROM ORA_YWO7W1B.AHC1 where USERNAME = '" + username +"' AND PASSWORD = '" + password +"'" ;
+			ResultSet result = stmt.executeQuery(sql);
+			if(result.next()){
+				aid = result.getInt("aid");
+				System.out.println("AID: " + aid);
+			}
+			else {
+				System.out.println("Wrong password");
 			}
 
 
-
-			//String sql = "SELECT aid FROM ORA_YWO7W1B.AHC1 WHERE USERNAME = 'yuyi' AND PASSWORD = '123456'";
-
-
-			String branchName = "Q";
-			PreparedStatement testps = connection.prepareStatement("SELECT BRANCH_ID FROM BRANCH WHERE BRANCH_NAME = ?");
-			testps.setString(1,branchName);
-			ResultSet testrs = testps.executeQuery();
-
-			while(testrs.next()){
-				System.out.println("branch id read: " + testrs.getInt("BRANCH_ID"));
-			}
-
-			System.out.println("Getting aid for username: " + username);
-			PreparedStatement ps = connection.prepareStatement("SELECT AID FROM AHC1 WHERE Username = ?");
+			PreparedStatement ps = connection.prepareStatement("SELECT AID FROM ORA_YWO7W1B.AHC1 WHERE USERNAME = ?");
 			ps.setString(1,username);
 			//ps.setString(2,password);
 
 			ResultSet rs = ps.executeQuery();
 
-			if(rs.next() && !rs.wasNull()){
-				System.out.println("AID: " +rs.getInt(1));
-				aid = rs.getInt(1);
+			if(rs.next()){
+				aid = rs.getInt("aid");
+				System.out.println("AID: " + aid + " username: ");
 			}
 		}
 		catch (Exception e) {
@@ -155,6 +146,33 @@ public class DatabaseConnectionHandler {
 			rollbackConnection();
 		}
 		return aid;
+	}
+
+	public UserModel getUserProfile(String aid) {
+		UserModel myUser;
+		try{
+			Statement stmt = connection.createStatement();
+			String sql = "SELECT ACCOUNTTYPE FROM AHC1 WHERE AID = " + aid;
+			ResultSet result = stmt.executeQuery(sql);
+			if(result.next()) {
+				System.out.println("Account type from statement: " + result.getString("accountType"));
+			}
+
+			PreparedStatement ps = connection.prepareStatement("SELECT ACCOUNTTYPE FROM AHC1 WHERE AID = ? ");
+			ps.setInt(1, Integer.parseInt(aid));
+
+			ResultSet rs = ps.getResultSet();
+			if(rs.next()) {
+				String accountType = rs.getString("AccountType");
+				System.out.println(accountType);
+			}
+			ps.close();
+		}catch (Exception e) {
+			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+			rollbackConnection();
+		}
+		myUser = new UserModel("test");
+		return myUser;
 	}
 
 	public void deleteBranch(int branchId) {
