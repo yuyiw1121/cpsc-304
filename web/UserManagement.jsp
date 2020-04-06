@@ -61,8 +61,8 @@
                     <option value="Approved">Approved</option>
                     <option value="Not Approved">Not Approved</option>
                 </select><br><br>
+                <input class="button" type="submit" value="Update"
 
-                <input class="button" type="submit" value="Update">
             </div>
         </form>
     </section>

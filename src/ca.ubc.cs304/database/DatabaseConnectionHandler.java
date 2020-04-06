@@ -8,7 +8,6 @@ import java.util.Random;
 import ca.ubc.cs304.model.AccountModel;
 import ca.ubc.cs304.model.BranchModel;
 import ca.ubc.cs304.model.UserModel;
-import oracle.jdbc.proxy.annotation.Pre;
 import oracle.sql.CHAR;
 
 import javax.swing.plaf.nimbus.State;
