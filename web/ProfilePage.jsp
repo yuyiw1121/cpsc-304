@@ -37,7 +37,7 @@
             <input class="info-input" type="text" id="username" name="username"
                    value="Username here" readonly><br>
             <label class="info-label" for="age">Age:</label>
-            <input class="info-input" type="text" id="age" name="age"
+            <input class="info-input" type="number" id="age" name="age"
                    value="Age here" readonly><br>
             <label class="info-label" for="btype">Blood Type:</label>
             <input class="info-input" type="text" id="btype" name="btype"
