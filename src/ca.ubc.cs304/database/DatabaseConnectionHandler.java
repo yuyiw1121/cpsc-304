@@ -1,12 +1,16 @@
 package ca.ubc.cs304.database;
 
-import ca.ubc.cs304.model.AccountModel;
-import ca.ubc.cs304.model.BranchModel;
-import ca.ubc.cs304.model.ContactModel;
-import ca.ubc.cs304.model.UserModel;
-
+import java.security.interfaces.RSAKey;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Random;
+
+import ca.ubc.cs304.model.AccountModel;
+import ca.ubc.cs304.model.BranchModel;
+import ca.ubc.cs304.model.UserModel;
+import oracle.sql.CHAR;
+
+import javax.swing.plaf.nimbus.State;
 
 /**
  * This class handles all database related transactions
@@ -169,46 +173,6 @@ public class DatabaseConnectionHandler {
 		myUser = new UserModel("test");
 		return myUser;
 	}
-
-	public UserModel[] getUsersWithBType(String bType) {
-		ArrayList<UserModel> users = new ArrayList<UserModel>();
-		try{
-			Statement stmt = connection.createStatement();
-			String sql = "SELECT * FROM AHC2, AHC3, DCA1, DCA2 " +
-					"WHERE BLOOD_TYPE = '" + bType +"' " +
-					"AND DCA1.AID = AHC2.AID";
-			ResultSet result = stmt.executeQuery(sql);
-			if (result.next()) {
-				UserModel model = new UserModel(result.getInt("age"),
-												result.getString("name"),
-												result.getInt("DHCID"),
-												result.getString("gender"),
-												result.getString("blood_type"),
-												new ContactModel(result.getString("address"),
-													result.getString("email"),
-													result.getString("phone")));
-				users.add(model);
-				System.out.println("Account from aid: " + result.getString("aid")
-						+ " age: " + result.getInt("age") + " name: " + result.getString("name")
-				+ " DHCID: " + result.getInt("DHCID") + " blood type: " + result.getString("blood_type")
-				+ " address: " + result.getString("address") + " email: " + result.getString("email")
-				+ " phone: " + result.getString("phone") + " gender: " + result.getString("gender"));
-			}
-
-			PreparedStatement ps = connection.prepareStatement("SELECT * FROM AHC2, AHC3, DCA1, DCA2 " +
-					"WHERE BLOOD_TYPE = ? AND DCA1.AID = AHC2.AID ");
-			ps.setString(1, bType);
-
-
-			ps.close();
-		}catch (Exception e) {
-			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
-			rollbackConnection();
-		}
-
-		return users.toArray(new UserModel[users.size()]);
-	}
-
 
 	public void deleteBranch(int branchId) {
 		try {
